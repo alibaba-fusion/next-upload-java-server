@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<html class="no-js" lang="">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>File Upload</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@alifd/next@1.7.16/dist/next.min.css">
+    <script crossorigin src="//cdn.jsdelivr.net/npm/react@16/umd/react.development.js"></script>
+    <script crossorigin src="//cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/babel-standalone@6/babel.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/@alifd/next@1.7.16/dist/next.min.js"></script>
+    <style>#mountNode { padding: 40px;}  </style>
+</head>
+
+<body>
+    <div id="mountNode"></div>
+    <script>
+        var mountNode = document.getElementById("mountNode");
+    </script>
+    <script type="text/babel">
+        function onSuccess(info) {
+            console.log('onSuccess : ', info);
+        }
+        function onError(err) {
+            console.log('onError : ', err);
+        }
+        const {Upload, Button} = window.Next;
+        ReactDOM.render(<div>
+            <Upload
+                action="/file"
+                onSuccess={onSuccess}
+                onError={onError}
+            >
+                <Button type="primary" style={{margin: '0 0 10px'}}>Upload File</Button>
+            </Upload>
+
+
+        </div>, mountNode);
+    </script>
 </body>
+
 </html>
